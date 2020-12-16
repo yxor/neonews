@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+       <section id="content-wrap" class="blog-single">
+   	<div class="row">
+   		<div class="col-twelve">
+
+   			<article class="format-standard">
+
+   				<div class="content-media">
+						<div class="post-thumb">
+							<img src="{{ article.headimage }}">
+						</div>
+					</div>
+
+					<div class="primary-content">
+
+						<h1 class="page-title">{{ article.title }}</h1>
+
+						<ul class="entry-meta">
+							<li class="date">{{ article.date }}</li>
+							<li class="cat"><a href="/{{ article.language.code }}/{{ article.category }}">{{ article.category }}</a></li>
+						</ul>
+
+
+                        <p>{{ article.content|safe }}</p>
+
+
+                        <p class="tags">
+		  			     	<span>By </span>
+		  				  	<a href="#">{{ article.author }}</a>
+		  			   </p>
+					</div>
+				</article>
+			</div>
+   	</div>
+
+
+   </section>
+
+{% endblock %}
+
+
+{% block social %}
+    <meta property="og:image" content="{{ article.headimage }}"/>
+    <meta property="og:title" content="{{ article.title }}"/>
+    <meta property="og:url" content="https://neonews.me/"/>
+    <meta property="og:site_name" content="NEONEWS.ME"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:description" content="{{ article.snippet }}"/>
+	<meta property="fb:admins" content="neowos"/>
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="neonews.me">
+	<meta name="twitter:creator" content="@neonewsnetwork1">
+	<meta name="twitter:title" content="{{ article.title }}">
+	<meta name="twitter:description" content="{{ article.snippet }}">
+	<meta name="twitter:image" content="{{ article.headimage }}">
+{% endblock %}

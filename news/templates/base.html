@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+   <meta charset="utf-8">
+	<title>{{ title }}</title>
+	<meta name="description" content="{{ description }}">
+    <meta name="keywords" content="news articles, real news, neonews, politics, sports, neo news, technology">
+	<meta name="author" content="Neo News">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#2C2C2C">
+	<meta name="msapplication-navbutton-color" content="#2C2C2C">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#2C2C2C">
+
+   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+   <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+
+	<script src="{% static 'js/modernizr.js' %}"></script>
+	<script src="{% static 'js/pace.min.js' %}"></script>
+
+	<link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+	<link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+    {% block social %}
+
+    {% endblock %}
+
+
+
+</head>
+
+<body id="top">
+   <header class="short-header">
+   	<div class="gradient-block"></div>
+
+   	<div class="row header-content">
+
+   		<div class="logo">
+	         <a href="/">Neo News</a>
+	      </div>
+
+	   	<nav id="main-nav-wrap">
+				<ul class="main-navigation sf-menu">
+					<li class="{% if current == 1 %}current{% endif %}"><a href="/" title="">Home</a></li>
+					<li class="{% if current == 2 %}current{% endif %} has-children">
+						<a href="#" title="">Categories</a>
+						<ul class="sub-menu">
+                            {% for category in categories %}
+			                    <li><a href="/{{ language.code }}/{{ category }}/">{{ category }}</a></li>
+                            {% endfor %}
+			            </ul>
+					</li>
+				</ul>
+			</nav>
+
+			<div class="triggers">
+				<a class="menu-toggle" href="#"><span>Menu</span></a>
+			</div>
+
+   	</div>
+
+   </header>
+
+    {% block content %}
+    
+    {% endblock %}
+
+   <footer>
+
+   	<div class="footer-main">
+   		<div class="row">
+	      	<div class="col-four tab-full mob-full footer-info">
+	            <h4>About Our Site</h4>
+	               <p>
+					Neo News is a news network that publish articles in different topics and categories, we try to remain unbiased and promote freedom of speech and real news.
+		          	</p>
+		      </div>
+	      	<div class="col-four tab-1-3 mob-1-2 social-links">
+	      		<h4>Social Media Links</h4>
+	      		<ul>
+	      			<li><a href="#">Twitter (coming soon)</a></li>
+					<li><a href="#">Facebook</a></li>
+					<li>Email: <a href="mailto: neonewsnetwork@portonmail.com">neonewsnetwork@portonmail.com</a></li>
+                </ul>
+	      	</div>
+
+	      	<div class="col-four tab-1-3 mob-full footer-subscribe">
+
+	      		<h4>Subscribe</h4>
+
+	      		<p>Keep yourself updated. Subscribe to our newsletter.</p>
+
+	      		<div class="subscribe-form">
+	      			<form id="mc-form" class="group" novalidate="true">
+							<!-- to be implemented-->
+							<input type="email" value="" name="dEmail" class="email" id="mc-email" placeholder="Type your email &amp; press enter" required="">
+			   			<input type="submit" name="subscribe" >
+		   				<label for="mc-email" class="subscribe-message"></label>
+						</form>
+	      		</div>
+	      	</div>
+	      </div>
+
+   	</div>
+
+      <div class="footer-bottom">
+      	<div class="row">
+
+      		<div class="col-twelve">
+	      		<div class="copyright">
+		         	<span>© Copyright Neo News 2019</span>
+		         </div>
+
+		         <div id="go-top">
+		            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
+		         </div>
+	      	</div>
+
+      	</div>
+      </div>
+
+   </footer>
+   <div id="hidden-links">
+		{% for language in languages %}
+			<a href="/{{ language.code }}/" style="display:hidden;" ></a>
+		{% endfor %}
+   </div>
+   <div id="preloader">
+    	<div id="loader"></div>
+   </div>
+   
+
+   <script src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+   <script src="{% static 'js/jquery.appear.js' %}"></script>
+   <script src="{% static 'js/plugins.js' %}"></script>
+   <script src="{% static 'js/main.js' %}"></script>
+   <script type="text/javascript">
+	var infolinks_pid = 3174219;
+	var infolinks_wsid = 0;
+	</script>
+	<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+
+	<script type="text/javascript">
+	var infolinks_pid = 3174219;
+	var infolinks_wsid = 1;
+	</script>
+	<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138995219-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-138995219-1');
+	</script>
+
+</body>
+
+</html>
